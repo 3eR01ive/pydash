@@ -18,10 +18,10 @@ class Loop:
         pygame.mixer.init()
         # pygame.font.init()
         self.screen = pygame.display.set_mode((width, height))
-        # if fullscreen:
-        #     self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        # pygame.display.set_caption(name)
-        # self.clock = pygame.time.Clock()
+        if fullscreen:
+            self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        pygame.display.set_caption(name)
+        self.clock = pygame.time.Clock()
         self.callback = None
 
     def set_callback(self, callback):
@@ -32,7 +32,7 @@ class Loop:
         running = True
         while running:
             iteration += 1
-            # self.clock.tick(FPS)
+            self.clock.tick(FPS)
 
             event = pygame.event.wait()
 
