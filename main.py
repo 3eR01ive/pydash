@@ -10,7 +10,7 @@ from sensors import Sensors
 
 def main():
 
-    loop = Loop("dash", int(2160), int(1080), False)
+    loop = Loop("dash", int(1024), int(600), True)
     gauges = Gauges()
     sensors = Sensors()
 
