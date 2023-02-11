@@ -2,7 +2,7 @@
     "devices":
     [
         {
-            "busnum": 1,
+            "busnum": 0,
             "address": "0x48",
             "pins":
             [
@@ -25,7 +25,7 @@
             ]
         },
         {
-            "busnum": 1,
+            "busnum": 0,
             "address": "0x49",
             "pins":
             [
