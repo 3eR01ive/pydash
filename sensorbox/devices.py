@@ -1,15 +1,21 @@
 import json
 
-from device import Device
+from deviceADC import DeviceADC
+from deviceRandom import DeviceRandom
 from pin import PinType
+
+import os
 
 
 class Devices:
     def __init__(self):
         self.__devieces = []
-        self.__create_device_from_config()
+        if os.uname()[4][:3] == 'arm':
+            self.__create_device_from_config_adc()
+        else:
+            self.__create_device_from_config_random()
 
-    def __create_device_from_config(self):
+    def __create_device_from_config_adc(self):
         with open('config/pinout.json') as f:
             config = json.load(f)
 
@@ -19,7 +25,25 @@ class Devices:
                 address = int(device["address"], 16)
                 pins = device["pins"]
 
-                device = Device(busnum=busnum, address=address)
+                device = DeviceADC(busnum=busnum, address=address)
+
+                for pin in pins:
+                    channel = pin['channel']
+                    type = PinType.PT_VOLTAGE if pin['type'] == 'VOLTAGE' else PinType.PT_RESISTOR
+                    device.create_pin(channel=channel, type=type)
+
+                self.__devieces.append(device)
+
+
+    def __create_device_from_config_random(self):
+        with open('config/random.json') as f:
+            config = json.load(f)
+
+            devices = config["devices"]
+            for device in devices:
+                pins = device["pins"]
+
+                device = DeviceRandom()
 
                 for pin in pins:
                     channel = pin['channel']
