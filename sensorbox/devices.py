@@ -4,13 +4,14 @@ from deviceADC import DeviceADC
 from deviceRandom import DeviceRandom
 from pin import PinType
 
-import os
+import platform
 
 
 class Devices:
     def __init__(self):
         self.__devieces = []
-        if os.uname()[4][:3] == 'arm':
+        print(F"platform : {platform.release()}")
+        if "BPI" in platform.release():
             self.__create_device_from_config_adc()
         else:
             self.__create_device_from_config_random()
