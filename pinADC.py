@@ -35,5 +35,5 @@ class PinADC(Pin):
         value = self.__ads.read_adc(index, gain=GAIN)
         R1 = 3300
         voltage = (value / 32768) * 6.144
-        Rx = (R1 * voltage) / (5 - voltage)
+        Rx = (R1 * voltage) / (4.86 - voltage)
         return Rx
