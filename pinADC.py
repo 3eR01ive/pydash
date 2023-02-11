@@ -23,7 +23,7 @@ class PinADC(Pin):
     def __to_voltage(self):
         # index = (self.channel - 1) % 4 # forward numeration
         index = 3 - ((self.channel-1) % 4) # reverse numeration
-        print(f'read index: {index}')
+        #print(f'read index: {index}')
         value = self.__ads.read_adc(index, gain=GAIN)
         voltage = (value / 32768) * 6.144
         return voltage
@@ -31,7 +31,7 @@ class PinADC(Pin):
     def __to_resistor(self):
         # index = (self.channel - 1) % 4 # forward numeration
         index = 3 - ((self.channel - 1) % 4)  # reverse numeration
-        print(f'read index: {index}')
+        #print(f'read index: {index}')
         value = self.__ads.read_adc(index, gain=GAIN)
         R1 = 3300
         voltage = (value / 32768) * 6.144
