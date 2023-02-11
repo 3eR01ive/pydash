@@ -6,6 +6,7 @@ if sys.version_info <= (2, 7):
 from loop import Loop
 from gauges import Gauges
 from sensors import Sensors
+from devices import Devices
 
 
 def main():
@@ -13,12 +14,19 @@ def main():
     loop = Loop("dash", int(1024), int(600), True)
     gauges = Gauges()
     sensors = Sensors()
+    devices = Devices()
 
     def render(screen, iteration):
 
         for sensor_name in sensors.get_sensors_names():
             sensor = sensors.get_sensor(sensor_name)
-            sensor.set_voltage((iteration * 0.03) % 5)
+
+            channel = sensor.get_channel()
+            pin = devices.get_pin_by_channel(channel=channel)
+            pin_value = pin.get_value()
+            sensor.set_input(pin_value)
+
+            #sensor.set_voltage((iteration * 0.03) % 5)
 
         for sensor_name in sensors.get_sensors_names():
             sensor = sensors.get_sensor(sensor_name)
