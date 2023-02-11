@@ -1,35 +1,42 @@
 class Sensor:
-    def __init__(self, name, channel, voltages, values):
+    def __init__(self, name, channel, inputs, values, init_value):
 
-        assert len(voltages) >= 2
+        assert len(inputs) >= 2
         assert len(values) >= 2
-        assert len(voltages) == len(values)
+        assert len(inputs) == len(values)
 
         self.__name = name
         self.__channel = channel
-        self.__voltages = voltages
+        self.__inputs = inputs
         self.__values = values
-        self.__current_voltage = 0
+        self.__current_input = 0
+        self.__current_value = init_value
 
-    def set_voltage(self, voltage):
-        self.__current_voltage = voltage
+    def get_channel(self):
+        return self.__channel
+
+    def set_input(self, input):
+        self.__current_input = input
 
     def get_value(self):
-        return self.__convert_voltage_to_value(self.__current_voltage)
+        return self.__current_value
+
+    def calculate(self):
+        self.__current_value = self.__convert_input_to_value(self.__current_input)
 
     def __linear_interpolate(self, value, _from, _to):
         assert _from < _to
-        assert 0 <= _from <= len(self.__voltages)
-        assert 0 <= _to <= len(self.__voltages)
+        assert 0 <= _from <= len(self.__inputs)
+        assert 0 <= _to <= len(self.__inputs)
 
-        voltage_from = self.__voltages[_from]
-        voltage_to = self.__voltages[_to]
+        input_from = self.__inputs[_from]
+        input_to = self.__inputs[_to]
 
-        assert value >= voltage_from
-        assert value <= voltage_to
-        assert voltage_to - voltage_from > 0
+        assert value >= input_from
+        assert value <= input_to
+        assert input_to - input_from > 0
 
-        multiplier = (value - voltage_from) / (voltage_to - voltage_from)
+        multiplier = (value - input_from) / (input_to - input_from)
 
         value_from = self.__values[_from]
         value_to = self.__values[_to]
@@ -38,18 +45,28 @@ class Sensor:
 
         return interpolated_value
 
-    def __convert_voltage_to_value(self, voltage_value):
-        _from = 0
-        _to = len(self.__voltages) - 1
+    def __convert_input_to_value(self, input_value):
+        # _from = 0
+        # _to = len(self.__inputs) - 1
 
-        for i, voltage in enumerate(self.__voltages):
-            if voltage_value >= voltage:
-                _from = i
-                break
+        # for i, input in enumerate(self.__inputs):
+        #     if input_value >= input:
+        #         _from = i
+        #         break
+        #
+        # for i, input in reversed(list(enumerate(self.__inputs))):
+        #     if input_value <= input:
+        #         _to = i
+        #         break
 
-        for i, voltage in reversed(list(enumerate(self.__voltages))):
-            if voltage_value <= voltage:
-                _to = i
-                break
+        for i in range(0, len(self.__inputs) - 1):
+            a = self.__inputs[i]
+            b = self.__inputs[i + 1]
 
-        return self.__linear_interpolate(voltage_value, _from, _to)
+            def beetween(x, a, b):
+                return a <= x <= b or a >= x >= b
+
+            if beetween(input_value, a, b):
+                return self.__linear_interpolate(input_value, i, i + 1)
+
+        return -1

@@ -20,10 +20,11 @@ class Sensors:
             for sensor_name in config.keys():
                 sensor_config = config[sensor_name]
 
+                init_value = float(sensor_config['init_value'])
                 channel = int(sensor_config['channel'])
-                voltages = list(map(float, sensor_config['voltages']))
+                inputs = list(map(float, sensor_config['inputs']))
                 values = list(map(float, sensor_config['values']))
 
-                sensor = Sensor(name=sensor_name, channel=channel, voltages=voltages, values=values)
+                sensor = Sensor(name=sensor_name, channel=channel, inputs=inputs, values=values, init_value = init_value)
 
                 self.__sensors[sensor_name] = sensor
