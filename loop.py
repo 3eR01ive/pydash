@@ -7,7 +7,7 @@ if sys.version_info <= (2, 7):
 import pygame
 
 
-FPS = 60
+FPS = 45
 BLACK = (0, 0, 0)
 
 
@@ -49,7 +49,7 @@ class Loop:
             #         if event.key == pygame.K_ESCAPE:
             #             running = False
 
-            self.screen.fill(BLACK)
+            #self.screen.fill(BLACK)
 
             if self.callback:
                 self.callback(self.screen, iteration)

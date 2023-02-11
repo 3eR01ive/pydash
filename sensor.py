@@ -18,6 +18,9 @@ class Sensor:
     def set_input(self, input):
         self.__current_input = input
 
+    def get_input(self):
+        return self.__current_input
+
     def get_value(self):
         return self.__current_value
 

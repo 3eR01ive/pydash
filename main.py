@@ -55,7 +55,7 @@ def main():
 
             gauge.set_value(sensor.get_value())
             if sensor_name == "oil_pressure":
-                print(F"oil_pressure: {sensor.get_value()}")
+                print(F"[oil_pressure] value: {sensor.get_value()}, input: {sensor.get_input()}")
 
         gauges.draw(screen)
 
