@@ -4,8 +4,12 @@ from pin import Pin
 
 
 class Device:
-    def __init__(self):
+    def __init__(self, name):
+        self._name = name
         self._pins = []
+
+    def name(self):
+        return self._name
 
     def create_pin(self, channel: int, type: PinType):
         assert false and "not implemented"

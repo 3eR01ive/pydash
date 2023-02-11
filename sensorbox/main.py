@@ -4,6 +4,7 @@ from sensors import Sensors
 devices = Devices()
 
 for device in devices.get_devices():
+    print(device.name())
     for pin in device.pins():
         print(f"channel: {pin.channel}, type: {pin.type}, value: {pin.get_value()}")
 
