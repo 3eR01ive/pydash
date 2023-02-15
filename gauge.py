@@ -48,6 +48,10 @@ class Gauge:
     def set_offset(self, offset):
         self.__offset = offset
 
+    def click(self, pos):
+        rect = self.__dash.get_rect(topleft=(self.__x, self.__y))
+        return rect.collidepoint(pos)
+
     def scale(self, scale):
         self.__dash = pygame.transform.scale(self.__dash, (
         int(self.__dash.get_rect().width * scale), int(self.__dash.get_rect().height * scale)))

@@ -32,27 +32,20 @@ class Loop:
         running = True
         while running:
             iteration += 1
-            self.clock.tick(FPS)
+            time = self.clock.tick(FPS)
 
-            event = pygame.event.wait()
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
 
-            if event.type == pygame.QUIT:
-                break
-
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_AC_BACK:
-                break
-
-            # for event in pygame.event.get():
-            #     if event.type == pygame.QUIT:
-            #         running = False
-            #     elif event.type == pygame.KEYDOWN:
-            #         if event.key == pygame.K_ESCAPE:
-            #             running = False
-
-            #self.screen.fill(BLACK)
+            self.screen.fill(BLACK)
 
             if self.callback:
-                self.callback(self.screen, iteration)
+                self.callback(self.screen, iteration, time, events)
 
             pygame.display.flip()
 

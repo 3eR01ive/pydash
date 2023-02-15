@@ -43,6 +43,7 @@ class Gauges:
 
                 self.__gauges[gauge_name] = gauge
 
-    def draw(self, screen):
+    def draw(self, screen, time):
+
         for gauge in self.__gauges.values():
             gauge.draw(screen)
