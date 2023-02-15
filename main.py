@@ -56,8 +56,8 @@ def main():
             gauge = gauges.get_gauge(sensor_name)
 
             gauge.set_value(sensor.get_value())
-            if sensor_name == "oil_pressure":
-                print(F"[oil_pressure] value: {sensor.get_value()}, input: {sensor.get_input()}")
+            if sensor_name == "fuel_pressure":
+                print(F"[fuel_pressure] value: {sensor.get_value()}, input: {sensor.get_input()}")
 
         
         sensor = sensors.get_sensor("afr")
