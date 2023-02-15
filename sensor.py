@@ -62,11 +62,11 @@ class Sensor:
         #         _to = i
         #         break
 
-        if input_value < self.inputs[0]:
+        if input_value < self.__inputs[0]:
             return self.__values[0]
 
-        lastIndex = len(self.inputs) - 1
-        if input_value > self.inputs[lastIndex]:
+        lastIndex = len(self.__inputs) - 1
+        if input_value > self.__inputs[lastIndex]:
             return self.__values[lastIndex]
 
         for i in range(0, len(self.__inputs) - 1):
