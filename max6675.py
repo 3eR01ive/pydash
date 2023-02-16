@@ -19,13 +19,14 @@ def set_pin (UNIT):
     unit = UNIT
     
     print(board.SPI_CS0)
+    print(board.P24)
     print(board.SCLK)
     print(board.MISO)
 
     #spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
-    cs = digitalio.DigitalInOut(board.SPI_CS0)
+    cs = digitalio.DigitalInOut(board.P24)
     cs.direction = digitalio.Direction.OUTPUT
     cs.value = True
     
