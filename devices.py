@@ -18,17 +18,17 @@ class Devices:
             self.__create_device_from_config_random()
 
     def __create_device_from_config_hw(self):
-        with open('config/pinout.json') as f:
+        with open('config/devices.json') as f:
             config = json.load(f)
 
             devices = config["devices"]
             for device in devices:
-                name = device["name"]
+                type = device["type"]
                 busnum = device["busnum"]
                 address = int(device["address"], 16)
                 pins = device["pins"]
 
-                if name == "ads1115":
+                if type == "ads1115":
                     device = DeviceADC(busnum=busnum, address=address)
 
                     for pin in pins:
@@ -37,7 +37,7 @@ class Devices:
                         device.create_pin(channel=channel, type=type)
                     self.__devieces.append(device)
 
-                if name == "max6675":
+                if type == "max6675":
                     device = DeviceThermo(busnum=busnum, address=address)
 
                     for pin in pins:
