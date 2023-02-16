@@ -17,17 +17,17 @@ def set_pin (UNIT):
     unit = UNIT
     
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
-    cs = digitalio.DigitalInOut(board.D26)
+    cs = digitalio.DigitalInOut(board.P26)
     cs.direction = digitalio.Direction.OUTPUT
     cs.pull = digitalio.Pull.UP
 
     #GPIO.setup(SCK, GPIO.OUT, initial = GPIO.LOW)
-    sck = digitalio.DigitalInOut(board.D23)
+    sck = digitalio.DigitalInOut(board.P23)
     sck.direction = digitalio.Direction.OUTPUT
     sck.pull = digitalio.Pull.DOWN
 
     #GPIO.setup(SO, GPIO.IN)
-    so = digitalio.DigitalInOut(board.D21)
+    so = digitalio.DigitalInOut(board.P21)
     so.direction = digitalio.Direction.INPUT
     
 
