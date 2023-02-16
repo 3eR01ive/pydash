@@ -30,7 +30,7 @@ def set_pin (UNIT):
     spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
-    cs = digitalio.DigitalInOut(board.P26)
+    cs = digitalio.DigitalInOut(board.P24)
     cs.direction = digitalio.Direction.OUTPUT
     cs.value = True
     
