@@ -22,7 +22,7 @@ def set_pin (UNIT):
     print(board.SCLK)
     print(board.MISO)
 
-    #spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
+    spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 
 
     #GPIO.setup(SCK, GPIO.OUT, initial = GPIO.LOW)
