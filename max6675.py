@@ -24,21 +24,19 @@ def set_pin (UNIT):
 
     #spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 
-    #GPIO.setup(SO, GPIO.IN)
-    so = digitalio.DigitalInOut(board.MISO)
-    so.direction = digitalio.Direction.INPUT
-    
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
     cs = digitalio.DigitalInOut(board.SPI_CS0)
     cs.direction = digitalio.Direction.OUTPUT
     cs.value = True
-
+    
     #GPIO.setup(SCK, GPIO.OUT, initial = GPIO.LOW)
     sck = digitalio.DigitalInOut(board.SCLK)
     sck.direction = digitalio.Direction.OUTPUT
     sck.value = False
 
-
+    #GPIO.setup(SO, GPIO.IN)
+    so = digitalio.DigitalInOut(board.MISO)
+    so.direction = digitalio.Direction.INPUT
     
 
 def read_temp():
