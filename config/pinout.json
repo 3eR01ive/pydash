@@ -2,6 +2,19 @@
     "devices":
     [
         {
+            "type": "max6675",
+            "busnum": 0,
+            "address": 0,
+            "pins":
+            [
+                {
+                    "channel" : 9,
+                    "type": "TEMPERATURE"
+                }
+            ]
+        },
+        {
+            "type": "ads1115",
             "busnum": 0,
             "address": "0x48",
             "pins":
@@ -25,6 +38,7 @@
             ]
         },
         {
+            "type": "ads1115",
             "busnum": 0,
             "address": "0x49",
             "pins":

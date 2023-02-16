@@ -3,7 +3,8 @@ from enum import Enum
 class PinType(Enum):
     PT_VOLTAGE = 0
     PT_RESISTOR = 1
-    PT_INVALID = 2
+    PT_TEMPERATURE = 2
+    PT_INVALID = 3
 
 
 class Pin:

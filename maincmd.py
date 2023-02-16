@@ -4,10 +4,6 @@ from sensors import Sensors
 devices = Devices()
 import time
 
-import max6675
-
-max6675.set_pin(1)
-
 print("devices:")
 for device in devices.get_devices():
     print(F"[{device.name()}]")
@@ -43,9 +39,6 @@ for i in range(0,100):
     print(f"sensor name: {name}, channel: {channel}, input: {pin_value}, value: {sensor_value}")
     time.sleep(1)
 
-    a = max6675.read_temp()
-    print("temp : " + a)
-    max6675.time.sleep(2)
 
 #obd = Obd()
 #obd.loop()
