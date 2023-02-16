@@ -25,10 +25,11 @@ class Devices:
             for device in devices:
                 type = device["type"]
                 busnum = device["busnum"]
-                address = int(device["address"], 16)
+                address = device["address"]
                 pins = device["pins"]
 
                 if type == "ads1115":
+                    address = int(address, 16)
                     device = DeviceADC(busnum=busnum, address=address)
 
                     for pin in pins:
@@ -38,6 +39,7 @@ class Devices:
                     self.__devieces.append(device)
 
                 if type == "max6675":
+                    address = int(address)
                     device = DeviceThermo(busnum=busnum, address=address)
 
                     for pin in pins:
