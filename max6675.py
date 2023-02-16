@@ -25,7 +25,7 @@ def set_pin (UNIT):
 
     #spi = busio.SPI(board.SCLK, MOSI=board.MOSI, MISO=board.MISO)
 
-    led = digitalio.DigitalInOut(board.LED)
+    led = digitalio.DigitalInOut(board.P16)
     led.direction = digitalio.Direction.OUTPUT
     led.value = True
 
