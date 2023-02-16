@@ -3,6 +3,7 @@
 import digitalio
 import board
 import time
+import busio
 
 #GPIO.setmode(GPIO.BOARD)
 #PIO.setwarnings(False)
@@ -13,12 +14,15 @@ def set_pin (UNIT):
     global so
     global cs
     global unit
+    global spi
 
     unit = UNIT
     
     print(board.SPI_CS0)
     print(board.SCLK)
     print(board.MISO)
+
+    spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
     cs = digitalio.DigitalInOut(board.SPI_CS0)
