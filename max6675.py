@@ -16,6 +16,10 @@ def set_pin (UNIT):
 
     unit = UNIT
     
+    print(board.SPI_CS0)
+    print(board.SCLK)
+    print(board.MISO)
+
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
     cs = digitalio.DigitalInOut(board.SPI_CS0)
     cs.direction = digitalio.Direction.OUTPUT
