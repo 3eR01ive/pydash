@@ -6,13 +6,7 @@ import time
 
 import max6675
 
-# set the pin for communicate with MAX6675
-cs = 26
-sck = 23
-so = 21
-
-# max6675.set_pin(CS, SCK, SO, unit)   [unit : 0 - raw, 1 - Celsius, 2 - Fahrenheit]
-max6675.set_pin(cs, sck, so, 1)
+max6675.set_pin(1)
 
 print("devices:")
 for device in devices.get_devices():
@@ -49,7 +43,7 @@ for i in range(0,100):
     print(f"sensor name: {name}, channel: {channel}, input: {pin_value}, value: {sensor_value}")
     time.sleep(1)
 
-    a = max6675.read_temp(cs)
+    a = max6675.read_temp()
     print("temp : " + a)
     max6675.time.sleep(2)
 
