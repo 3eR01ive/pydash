@@ -19,12 +19,12 @@ def set_pin (UNIT):
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
     cs = digitalio.DigitalInOut(board.P26)
     cs.direction = digitalio.Direction.OUTPUT
-    cs.pull = digitalio.Pull.UP
+    cs.value = True
 
     #GPIO.setup(SCK, GPIO.OUT, initial = GPIO.LOW)
     sck = digitalio.DigitalInOut(board.P23)
     sck.direction = digitalio.Direction.OUTPUT
-    sck.pull = digitalio.Pull.DOWN
+    sck.value = False
 
     #GPIO.setup(SO, GPIO.IN)
     so = digitalio.DigitalInOut(board.P21)
