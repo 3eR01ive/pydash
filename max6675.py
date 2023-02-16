@@ -30,7 +30,7 @@ def set_pin (UNIT):
     led.value = True
 
     #GPIO.setup(CS, GPIO.OUT, initial = GPIO.HIGH)
-    cs = digitalio.DigitalInOut(board.P24)
+    cs = digitalio.DigitalInOut(board.P26)
     cs.direction = digitalio.Direction.OUTPUT
     cs.value = True
     
